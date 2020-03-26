@@ -7,7 +7,7 @@ let Member = require('./member.model');
 // Defined store route
 memberRoutes.route('/add').post(function (req, res) {
     let member = new Member(req.body);
-    business.save()
+    member.save()
     .then(member => {
         res.status(200).json({'member': 'member in added successfully'})
     })

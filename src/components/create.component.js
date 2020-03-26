@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Create extends Component {
     constructor(props){
@@ -33,7 +34,14 @@ export default class Create extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        console.log(`The values are ${this.state.person_name}, ${this.state.job_title_name}, and ${this.state.phone_number}`)
+        const obj = {
+            person_name: this.state.person_name,
+            job_title_name: this.state.job_title_name,
+            phone_number: this.state.phone_number
+        };
+        axios.post('http://localhost:4000/member/add', obj)
+        .then(res => console.log(res.data));
+
         this.setState({
             person_name: '',
             job_title_name: '',
